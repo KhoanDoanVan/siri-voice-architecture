@@ -1,0 +1,22 @@
+{
+  "bootstrap_alignment_pass": true,
+  "checks": {
+    "one_label_per_feature_frame": true,
+    "labels_in_declared_state_set": true,
+    "negative_rows_are_background": true,
+    "positive_rows_contain_three_keyword_states": true,
+    "augmented_rows_inherit_parent_alignment": true,
+    "transition_rows_sum_to_one": true,
+    "forbidden_transitions_have_zero_probability": true
+  },
+  "aligned_rows": 14330,
+  "original_positive_alignments": 996,
+  "vad_fallbacks": 0,
+  "active_frames": {
+    "min": 9,
+    "median": 37.0,
+    "max": 98
+  },
+  "label_status": "bootstrap_pseudo_label_not_human_verified",
+  "next_step": "Review boundaries, then train the DNN frame classifier."
+}

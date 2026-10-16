@@ -1,0 +1,52 @@
+{
+  "01_raw_data_ingestion.ipynb": {
+    "status": "passed",
+    "code_cells": 9,
+    "seconds": 3.74
+  },
+  "02_data_profiling.ipynb": {
+    "status": "passed",
+    "code_cells": 8,
+    "seconds": 5.24
+  },
+  "03_data_cleaning.ipynb": {
+    "status": "passed",
+    "code_cells": 7,
+    "seconds": 1.52
+  },
+  "04_dataset_splitting.ipynb": {
+    "status": "passed",
+    "code_cells": 7,
+    "seconds": 1.4
+  },
+  "05_signal_standardization.ipynb": {
+    "status": "passed",
+    "code_cells": 9,
+    "seconds": 9.16
+  },
+  "06_data_augmentation.ipynb": {
+    "status": "passed",
+    "code_cells": 9,
+    "seconds": 7.71
+  },
+  "07_feature_extraction.ipynb": {
+    "status": "passed",
+    "code_cells": 9,
+    "seconds": 17.33
+  },
+  "08_feature_normalization.ipynb": {
+    "status": "passed",
+    "code_cells": 7,
+    "seconds": 11.34
+  },
+  "09_quality_assurance.ipynb": {
+    "status": "passed",
+    "code_cells": 16,
+    "seconds": 16.81
+  },
+  "10_hmm_topology_and_bootstrap_alignment.ipynb": {
+    "status": "passed",
+    "code_cells": 15,
+    "seconds": 6.74
+  }
+}

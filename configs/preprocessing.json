@@ -1,0 +1,24 @@
+{
+  "run_name": "baseline_v1",
+  "source_dir": "data/raw/mini_speech_commands",
+  "archive": "data/downloads/mini_speech_commands.zip",
+  "keyword": "stop",
+  "seed": "siri-preprocessing-v1",
+  "sample_rate": 16000,
+  "train_fraction": 0.8,
+  "validation_fraction": 0.1,
+  "quiet_dbfs": -50,
+  "window_samples": 400,
+  "hop_samples": 160,
+  "fft_size": 512,
+  "mel_bands": 40,
+  "mel_min_hz": 20,
+  "mel_max_hz": 7600,
+  "log_floor": 1e-10,
+  "normalization_std_floor": 1e-5,
+  "augmentation": {
+    "copies_per_training_clip": 1,
+    "gain_db": [-6, 3],
+    "synthetic_noise_snr_db": [15, 30]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "source_url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip",
+  "archive_sha256": "49650f2341b26d886b46b3f4fb8fed59e30300b17550f1ee4a768b3106cf93a0",
+  "archive_bytes": 182082353,
+  "keyword": "stop",
+  "seed": "siri-experiment-01-v1",
+  "split_method": "Custom deterministic SHA256 speaker-component split, expected 80/10/10; not official Google split",
+  "valid_clips": 8000,
+  "rejected_clips": 0,
+  "unique_speakers": 1750,
+  "split_groups": 1750,
+  "duration_seconds": {
+    "min": 0.4266875,
+    "median": 1.0,
+    "max": 1.0
+  },
+  "clips_shorter_than_one_second": 822,
+  "clips_with_saturated_samples": 363,
+  "clips_below_minus_50_dbfs": 204,
+  "rms_dbfs_range": [
+    -90.30899869919436,
+    -5.472592328833753
+  ],
+  "duplicate_pcm_groups": 27,
+  "conflicting_label_duplicate_groups": 0,
+  "cross_split_speaker_overlap": 0,
+  "cross_split_exact_pcm_overlap": 0,
+  "splits": {
+    "train": {
+      "clips": 6409,
+      "speakers": 1390,
+      "keyword_clips": 798,
+      "other_word_clips": 5611,
+      "audio_minutes": 105.1203895833335,
+      "other_word_minutes": 91.98908750000011,
+      "word_counts": {
+        "down": 793,
+        "go": 805,
+        "left": 834,
+        "no": 790,
+        "right": 824,
+        "stop": 798,
+        "up": 776,
+        "yes": 789
+      }
+    },
+    "validation": {
+      "clips": 832,
+      "speakers": 185,
+      "keyword_clips": 109,
+      "other_word_clips": 723,
+      "audio_minutes": 13.68010625,
+      "other_word_minutes": 11.887045833333334,
+      "word_counts": {
+        "down": 102,
+        "go": 97,
+        "left": 90,
+        "no": 106,
+        "right": 94,
+        "stop": 109,
+        "up": 127,
+        "yes": 107
+      }
+    },
+    "test": {
+      "clips": 759,
+      "speakers": 175,
+      "keyword_clips": 93,
+      "other_word_clips": 666,
+      "audio_minutes": 12.359839583333335,
+      "other_word_minutes": 10.835531250000003,
+      "word_counts": {
+        "down": 105,
+        "go": 98,
+        "left": 76,
+        "no": 104,
+        "right": 82,
+        "stop": 93,
+        "up": 97,
+        "yes": 104
+      }
+    }
+  },
+  "limitations": [
+    "Word labels only; no verified keyword boundaries or phonetic-state alignments",
+    "Other-word clips are not silence and not representative continuous background",
+    "Exact hashes do not detect near-duplicates or unidentified repeat contributors",
+    "No model trained; no manual audio-quality or label audit performed"
+  ]
+}

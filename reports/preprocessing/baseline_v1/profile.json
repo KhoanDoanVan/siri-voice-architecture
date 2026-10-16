@@ -1,0 +1,19 @@
+{
+  "total": 8000,
+  "valid": 8000,
+  "flags": {
+    "shorter_than_one_second": 822,
+    "saturated_samples_review": 363,
+    "low_level_review": 204
+  },
+  "word_counts": {
+    "down": 1000,
+    "go": 1000,
+    "left": 1000,
+    "no": 1000,
+    "right": 1000,
+    "stop": 1000,
+    "up": 1000,
+    "yes": 1000
+  }
+}

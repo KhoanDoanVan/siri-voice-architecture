@@ -1,0 +1,54 @@
+{
+  "preprocessing_pass": true,
+  "checks": {
+    "every_split_has_both_classes": true,
+    "zero_cross_split_speaker_id_overlap": true,
+    "zero_cross_split_pcm_sha256_overlap": true,
+    "original_pcm_unique": true,
+    "raw_files_unchanged": true,
+    "augmentation_train_only": true,
+    "augmentation_parent_in_training": true,
+    "normalization_fit_only_original_training": true,
+    "audio_format_and_length": true,
+    "feature_shapes_and_finite_values": true,
+    "normalization_matches_saved_statistics": true,
+    "training_normalized_mean_near_zero": true,
+    "training_normalized_std_near_one": true,
+    "chunked_features_match_causal_batch": true
+  },
+  "splits": {
+    "train": {
+      "clips": 6357,
+      "speakers": 1397,
+      "positive": 799,
+      "negative": 5558
+    },
+    "validation": {
+      "clips": 797,
+      "speakers": 175,
+      "positive": 95,
+      "negative": 702
+    },
+    "test": {
+      "clips": 819,
+      "speakers": 178,
+      "positive": 102,
+      "negative": 717
+    }
+  },
+  "original_clips": 7973,
+  "augmented_clips": 6357,
+  "max_streaming_feature_error": 1.9073486328125e-06,
+  "max_training_normalized_mean_abs": 1.4858585367373651e-09,
+  "max_training_normalized_std_error": 3.0471785095187442e-09,
+  "phonetic_hmm_training_ready": false,
+  "production_evaluation_ready": false,
+  "missing": [
+    "Verified speech/keyword boundaries",
+    "Phonetic-state alignment labels",
+    "Continuous background and phonetic-confusion coverage",
+    "Mobile/far-field evaluation",
+    "Manual audio/label review"
+  ],
+  "fit_verdict": "Useful for a stop-vs-other-word mechanics experiment; insufficient for supervised phonetic DNN-HMM training or production claims."
+}
