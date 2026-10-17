@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1360" viewBox="0 0 2400 1360" role="img" aria-labelledby="title desc">
+  <title id="title">Detailed merged Siri-inspired voice activation architecture</title>
+  <desc id="desc">A dark Apple-style technical architecture merging the 2023 Siri voice-trigger runtime with the 2018 personalization concept. It details AOP buffering, DNN-HMM detection, Conformer checking, early and late SpeakerID, full-utterance capture, ASR, acoustic, text and lattice false-trigger mitigation, neural fusion, NLU, TTS, enrollment, profile scoring, end-metric training, R2 range restriction, DKM clustering and 4-bit palettization.</desc>
+  <defs>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171718"/><stop offset="1" stop-color="#101011"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3b3b3f"/><stop offset="1" stop-color="#303034"/></linearGradient>
+    <linearGradient id="profile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#493646"/><stop offset="1" stop-color="#332b34"/></linearGradient>
+    <linearGradient id="training" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#263847"/><stop offset="1" stop-color="#252c35"/></linearGradient>
+    <filter id="shadow" x="-25%" y="-40%" width="150%" height="190%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.3"/></filter>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1l9 5-9 5z" fill="#ededf1"/></marker>
+    <marker id="dataArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1l9 5-9 5z" fill="#a9cfff"/></marker>
+    <marker id="profileArrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1l9 5-9 5z" fill="#e47bbb"/></marker>
+    <style>
+      .ui{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.card{fill:url(#card)}.title{fill:#f5f5f7;font-size:24px;font-weight:720}.subtitle{fill:#d0d0d5;font-size:16px}.label{fill:#9fa0aa;font-size:13px}.group-title{fill:#f3f3f5;font-size:19px;font-weight:760}.mini-title{fill:#28282d;font-size:16px;font-weight:760}.mini-sub{fill:#53545d;font-size:12px}.dark-mini-title{fill:#f5f5f7;font-size:15px;font-weight:720}.dark-mini-sub{fill:#c0c2ca;font-size:12px}.arrow{fill:none;stroke:#ededf1;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#arrow)}.line{fill:none;stroke:#d8d8de;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}.data{fill:none;stroke:#a9cfff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#dataArrow)}.profile-line{fill:none;stroke:#e47bbb;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:7 7;marker-end:url(#profileArrow)}
+    </style>
+  </defs>
+
+  <rect width="2400" height="1360" fill="url(#canvas)"/>
+  <g class="ui">
+    <!-- Spoken request -->
+    <g filter="url(#shadow)"><rect x="70" y="42" width="700" height="140" rx="18" class="card"/></g>
+    <path d="M399 66h42a11 11 0 0111 11v17a11 11 0 01-11 11h-12l-13 11 3-11h-20a11 11 0 01-11-11V77a11 11 0 0111-11z" fill="#fff"/>
+    <circle cx="410" cy="85" r="3.5" fill="#35353a"/><circle cx="420" cy="85" r="3.5" fill="#35353a"/><circle cx="430" cy="85" r="3.5" fill="#35353a"/>
+    <text x="420" y="145" text-anchor="middle" fill="#f5f5f7" font-size="27">Siri, how’s the weather?</text>
+
+    <!-- Spoken response with verified classic Siri artwork -->
+    <g filter="url(#shadow)"><rect x="1660" y="42" width="670" height="140" rx="18" class="card"/></g>
+    <image href="AppleSiriIcon2017.png" x="1974" y="62" width="42" height="42" preserveAspectRatio="xMidYMid meet"/>
+    <text x="1995" y="145" text-anchor="middle" fill="#8dbaff" font-size="26" font-weight="700">It’s currently partly cloudy.</text>
+
+    <!-- Activation lane -->
+    <text x="70" y="222" fill="#a9cfff" font-size="14" font-weight="800" letter-spacing="1.8">ALWAYS-ON ACTIVATION</text>
+    <path d="M420 182V250" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="110" y="255" width="620" height="82" rx="15" class="card"/></g>
+    <text x="420" y="289" text-anchor="middle" class="title">Microphone + AOP Ring Buffer</text>
+    <text x="420" y="316" text-anchor="middle" class="subtitle">continuous streaming audio · bounded pre-trigger history</text>
+
+    <path d="M420 337V373" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="110" y="378" width="620" height="185" rx="17" class="card"/></g>
+    <text x="420" y="411" text-anchor="middle" class="title">AOP or AP VoiceTrigger Detector</text>
+    <g><rect x="132" y="432" width="172" height="94" rx="13" fill="#f3f3f5"/><text x="218" y="464" text-anchor="middle" class="mini-title">Acoustic Frames</text><text x="218" y="488" text-anchor="middle" class="mini-sub">streaming features</text><text x="218" y="509" text-anchor="middle" class="mini-sub">bounded context</text></g>
+    <path d="M304 479H327" class="data"/>
+    <g><rect x="332" y="432" width="172" height="94" rx="13" fill="#f3f3f5"/><text x="418" y="464" text-anchor="middle" class="mini-title">DNN Softmax</text><text x="418" y="488" text-anchor="middle" class="mini-sub">23 state probabilities</text><text x="418" y="509" text-anchor="middle" class="mini-sub">21 phoneme + sil + bg</text></g>
+    <path d="M504 479H527" class="data"/>
+    <g><rect x="532" y="432" width="176" height="94" rx="13" fill="#f3f3f5"/><text x="620" y="464" text-anchor="middle" class="mini-title">HMM Decoder</text><text x="620" y="488" text-anchor="middle" class="mini-sub">dynamic programming</text><text x="620" y="509" text-anchor="middle" class="mini-sub">score → threshold</text></g>
+    <text x="420" y="548" text-anchor="middle" fill="#a9cfff" font-size="12">high recall · low power · 4-bit palettized DNN weights</text>
+
+    <path d="M420 563V600" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="110" y="605" width="620" height="76" rx="15" class="card"/></g>
+    <text x="420" y="636" text-anchor="middle" class="title">Candidate Audio Recovery</text>
+    <text x="420" y="661" text-anchor="middle" class="subtitle">recover trigger window from ring buffer · wake AP</text>
+
+    <path d="M420 681V718" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="110" y="723" width="620" height="196" rx="17" class="card"/></g>
+    <text x="420" y="756" text-anchor="middle" class="title">AP VoiceTrigger Checker</text>
+    <g><rect x="126" y="777" width="138" height="103" rx="12" fill="#f3f3f5"/><text x="195" y="810" text-anchor="middle" class="mini-title">Conformer</text><text x="195" y="834" text-anchor="middle" class="mini-sub">self-attention</text><text x="195" y="854" text-anchor="middle" class="mini-sub">+ convolution</text></g>
+    <path d="M264 829H280" class="data"/>
+    <g><rect x="285" y="777" width="132" height="103" rx="12" fill="#f3f3f5"/><text x="351" y="810" text-anchor="middle" class="mini-title">CTC Head</text><text x="351" y="834" text-anchor="middle" class="mini-sub">target phonemes</text><text x="351" y="854" text-anchor="middle" class="mini-sub">sequence score</text></g>
+    <path d="M417 829H433" class="data"/>
+    <g><rect x="438" y="777" width="132" height="103" rx="12" fill="#f3f3f5"/><text x="504" y="805" text-anchor="middle" class="mini-title">Binary Head</text><text x="504" y="829" text-anchor="middle" class="mini-sub">trigger / negative</text><text x="504" y="849" text-anchor="middle" class="mini-sub">phrase-specific</text><text x="504" y="869" text-anchor="middle" class="mini-sub">fine-tuning</text></g>
+    <g><rect x="585" y="777" width="129" height="103" rx="12" fill="#26272b" stroke="#73747c"/><text x="649" y="805" text-anchor="middle" class="dark-mini-title">Aux Decoder</text><text x="649" y="829" text-anchor="middle" class="dark-mini-sub">autoregressive</text><text x="649" y="849" text-anchor="middle" class="dark-mini-sub">CE regularizer</text><text x="649" y="869" text-anchor="middle" fill="#8f9099" font-size="11">training only</text></g>
+    <text x="420" y="903" text-anchor="middle" fill="#a9cfff" font-size="12">high-precision candidate re-scoring · encoder-only inference</text>
+
+    <path d="M420 919V957" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="110" y="962" width="620" height="145" rx="17" class="card"/></g>
+    <text x="420" y="996" text-anchor="middle" class="title">Early SpeakerID · Trigger</text>
+    <g><rect x="134" y="1015" width="168" height="64" rx="12" fill="#f3f3f5"/><text x="218" y="1041" text-anchor="middle" class="mini-title">Trigger Audio</text><text x="218" y="1062" text-anchor="middle" class="mini-sub">short evidence</text></g>
+    <path d="M302 1047H324" class="data"/>
+    <g><rect x="329" y="1015" width="176" height="64" rx="12" fill="#f3f3f5"/><text x="417" y="1041" text-anchor="middle" class="mini-title">Speaker Embedding</text><text x="417" y="1062" text-anchor="middle" class="mini-sub">variable-length LSTM</text></g>
+    <path d="M505 1047H527" class="data"/>
+    <g><rect x="532" y="1015" width="174" height="64" rx="12" fill="#f3f3f5"/><text x="619" y="1041" text-anchor="middle" class="mini-title">Profile Match</text><text x="619" y="1062" text-anchor="middle" class="mini-sub">cosine score + threshold</text></g>
+    <text x="420" y="1094" text-anchor="middle" fill="#c7c8ce" font-size="12">early reject or continue listening</text>
+
+    <!-- Response lane -->
+    <path d="M1995 252V187" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="1780" y="252" width="430" height="82" rx="15" fill="#171719" stroke="#ededf1" stroke-width="3"/></g>
+    <text x="1995" y="303" text-anchor="middle" class="title">Text to Speech (TTS)</text>
+    <path d="M1995 374V339" class="arrow"/>
+    <g filter="url(#shadow)"><rect x="1780" y="374" width="430" height="102" rx="15" class="card"/></g>
+    <text x="1995" y="414" text-anchor="middle" class="title">Siri Natural Language</text>
+    <text x="1995" y="446" text-anchor="middle" class="title">Understanding</text>
+    <text x="1760" y="426" text-anchor="end" class="label">downstream boundary</text>
+
+    <!-- Detailed SDSD group -->
+    <g filter="url(#shadow)"><rect x="770" y="520" width="1560" height="587" rx="28" fill="#343438"/></g>
+    <text x="800" y="559" class="group-title">Siri Directed Speech Detection · full-utterance false-trigger mitigation</text>
+    <text x="2300" y="559" text-anchor="end" fill="#9b9ba4" font-size="13">2023 runtime backbone</text>
+
+    <g filter="url(#shadow)"><rect x="800" y="590" width="300" height="100" rx="14" fill="#25262a" stroke="#777880"/></g>
+    <text x="950" y="621" text-anchor="middle" class="dark-mini-title">Full-Utterance Buffer</text>
+    <text x="950" y="647" text-anchor="middle" class="dark-mini-sub">trigger history + request</text>
+    <text x="950" y="668" text-anchor="middle" class="dark-mini-sub">end-of-speech endpoint</text>
+
+    <g filter="url(#shadow)"><rect x="1130" y="590" width="410" height="100" rx="14" fill="#171719" stroke="#ededf1" stroke-width="2.5"/></g>
+    <text x="1335" y="621" text-anchor="middle" class="dark-mini-title">Automatic Speech Recognition · ASR</text>
+    <text x="1335" y="647" text-anchor="middle" class="dark-mini-sub">one-best transcript · word alignments</text>
+    <text x="1335" y="668" text-anchor="middle" class="dark-mini-sub">beam-search WFST decoding lattice</text>
+
+    <g filter="url(#shadow)"><rect x="1845" y="590" width="330" height="82" rx="15" fill="#f3f3f5"/></g>
+    <text x="2010" y="622" text-anchor="middle" class="mini-title">Neural Combiner</text>
+    <text x="2010" y="647" text-anchor="middle" class="mini-sub">calibrated scores + masks</text>
+
+    <!-- Full utterance distribution -->
+    <path d="M730 1034H755V640H795" class="arrow"/>
+    <text x="744" y="820" transform="rotate(-90 744 820)" text-anchor="middle" class="label">accepted trigger → keep buffering</text>
+    <path d="M1100 640H1125" class="data"/>
+    <path d="M950 690V735H950V770M950 735H1295V770" class="data"/>
+
+    <!-- Four evidence modules -->
+    <g filter="url(#shadow)"><rect x="800" y="775" width="300" height="158" rx="15" fill="#f3f3f5"/></g>
+    <text x="950" y="807" text-anchor="middle" class="mini-title">Late SpeakerID</text>
+    <text x="950" y="831" text-anchor="middle" class="mini-sub">trigger + payload embedding</text>
+    <text x="950" y="853" text-anchor="middle" class="mini-sub">same enrolled profile</text>
+    <path d="M850 878h200" stroke="#c3c4ca"/>
+    <text x="950" y="902" text-anchor="middle" class="mini-sub">cosine score → identity evidence</text>
+
+    <g filter="url(#shadow)"><rect x="1145" y="775" width="300" height="158" rx="15" fill="#f3f3f5"/></g>
+    <text x="1295" y="807" text-anchor="middle" class="mini-title">Acoustic FTM</text>
+    <text x="1295" y="831" text-anchor="middle" class="mini-sub">filterbanks → streaming SA</text>
+    <text x="1295" y="853" text-anchor="middle" class="mini-sub">attention summarization</text>
+    <path d="M1195 878h200" stroke="#c3c4ca"/>
+    <text x="1295" y="902" text-anchor="middle" class="mini-sub">2D logits → directedness score</text>
+
+    <g filter="url(#shadow)"><rect x="1490" y="775" width="300" height="158" rx="15" fill="#f3f3f5"/></g>
+    <text x="1640" y="807" text-anchor="middle" class="mini-title">Text ODLD</text>
+    <text x="1640" y="831" text-anchor="middle" class="mini-sub">one-best text → BERT-like encoder</text>
+    <text x="1640" y="853" text-anchor="middle" class="mini-sub">classification-token heads</text>
+    <path d="M1540 878h200" stroke="#c3c4ca"/>
+    <text x="1640" y="902" text-anchor="middle" class="mini-sub">directed + non-vocative scores</text>
+
+    <g filter="url(#shadow)"><rect x="1835" y="775" width="300" height="158" rx="15" fill="#f3f3f5"/></g>
+    <text x="1985" y="807" text-anchor="middle" class="mini-title">Lattice RNN</text>
+    <text x="1985" y="831" text-anchor="middle" class="mini-sub">word-aligned WFST arcs</text>
+    <text x="1985" y="853" text-anchor="middle" class="mini-sub">graph / LSTM encoding</text>
+    <path d="M1885 878h200" stroke="#c3c4ca"/>
+    <text x="1985" y="902" text-anchor="middle" class="mini-sub">recognition-uncertainty score</text>
+
+    <!-- ASR products to text and lattice branches -->
+    <path d="M1335 690V720H1640V770M1335 720H1985V770" class="data"/>
+    <text x="1450" y="712" class="label">transcript</text><text x="1815" y="712" class="label">lattice</text>
+
+    <!-- Evidence fusion bus -->
+    <path d="M950 933V972H2010M1295 933V972M1640 933V972M1985 933V972M2010 972V677" class="arrow"/>
+    <text x="2018" y="955" fill="#c8c9ce" font-size="12">four complementary scores</text>
+    <text x="800" y="1042" fill="#a7a8b0" font-size="13">Acoustic FTM can score while ASR decodes; text and lattice signals complete after recognition output is available.</text>
+    <text x="800" y="1070" fill="#a7a8b0" font-size="13">The combiner accepts the request or suppresses the activation; accepted ASR text continues to downstream NLU.</text>
+
+    <path d="M2010 590V481" class="arrow"/>
+    <text x="2022" y="520" fill="#aaaab2" font-size="12">accept + transcript</text>
+
+    <!-- Personalization mechanics -->
+    <g filter="url(#shadow)"><rect x="70" y="1160" width="1080" height="150" rx="21" fill="url(#profile)" stroke="#744f6c" stroke-width="2"/></g>
+    <text x="92" y="1191" fill="#f5f5f7" font-size="17" font-weight="760">PERSONALIZATION · 2018 PROFILE CONCEPT + 2023 VARIABLE-LENGTH EMBEDDING</text>
+    <g><rect x="92" y="1210" width="220" height="76" rx="12" fill="#f3f3f5"/><text x="202" y="1239" text-anchor="middle" class="mini-title">Guided Enrollment</text><text x="202" y="1263" text-anchor="middle" class="mini-sub">five prompted phrases</text></g>
+    <path d="M312 1248H332" class="profile-line"/>
+    <g><rect x="337" y="1210" width="245" height="76" rx="12" fill="#f3f3f5"/><text x="459" y="1239" text-anchor="middle" class="mini-title">Speaker Embeddings</text><text x="459" y="1263" text-anchor="middle" class="mini-sub">one shared extractor</text></g>
+    <path d="M582 1248H602" class="profile-line"/>
+    <g><rect x="607" y="1210" width="230" height="76" rx="12" fill="#f3f3f5"/><text x="722" y="1239" text-anchor="middle" class="mini-title">On-Device Profile</text><text x="722" y="1263" text-anchor="middle" class="mini-sub">trusted reference vectors</text></g>
+    <path d="M837 1248H857" class="profile-line"/>
+    <g><rect x="862" y="1210" width="266" height="76" rx="12" fill="#f3f3f5"/><text x="995" y="1239" text-anchor="middle" class="mini-title">Mean Cosine + Threshold</text><text x="995" y="1263" text-anchor="middle" class="mini-sub">carefully gated profile updates</text></g>
+    <path d="M995 1210C995 1150 692 1148 620 1083" class="profile-line"/>
+    <path d="M837 1160C837 1108 900 1010 950 938" class="profile-line"/>
+
+    <!-- First pass training and deployment recipe -->
+    <g filter="url(#shadow)"><rect x="1180" y="1160" width="1150" height="150" rx="21" fill="url(#training)" stroke="#4f6e86" stroke-width="2"/></g>
+    <text x="1202" y="1191" fill="#f5f5f7" font-size="17" font-weight="760">FIRST-PASS TRAINING + DEPLOYMENT · LOCAL APPLE PAPERS</text>
+    <g><rect x="1202" y="1210" width="190" height="76" rx="12" fill="#f3f3f5"/><text x="1297" y="1239" text-anchor="middle" class="mini-title">CE Pretrain</text><text x="1297" y="1263" text-anchor="middle" class="mini-sub">frame-state targets</text></g>
+    <path d="M1392 1248H1410" class="data"/>
+    <g><rect x="1415" y="1210" width="230" height="76" rx="12" fill="#f3f3f5"/><text x="1530" y="1239" text-anchor="middle" class="mini-title">End-Metric Fine-Tune</text><text x="1530" y="1263" text-anchor="middle" class="mini-sub">differentiate HMM score</text></g>
+    <path d="M1645 1248H1663" class="data"/>
+    <g><rect x="1668" y="1210" width="190" height="76" rx="12" fill="#f3f3f5"/><text x="1763" y="1239" text-anchor="middle" class="mini-title">R² Loss</text><text x="1763" y="1263" text-anchor="middle" class="mini-sub">restrict outliers</text></g>
+    <path d="M1858 1248H1876" class="data"/>
+    <g><rect x="1881" y="1210" width="190" height="76" rx="12" fill="#f3f3f5"/><text x="1976" y="1239" text-anchor="middle" class="mini-title">DKM</text><text x="1976" y="1263" text-anchor="middle" class="mini-sub">learn 16 centroids</text></g>
+    <path d="M2071 1248H2089" class="data"/>
+    <g><rect x="2094" y="1210" width="214" height="76" rx="12" fill="#f3f3f5"/><text x="2201" y="1239" text-anchor="middle" class="mini-title">4-Bit Palette</text><text x="2201" y="1263" text-anchor="middle" class="mini-sub">indices + lookup table</text></g>
+
+    <text x="70" y="1340" fill="#74747d" font-size="12">Target learning architecture synthesized from public disclosures; exact Apple production scheduling, thresholds, weights, data, and fusion policy remain private.</text>
+    <text x="2330" y="1340" text-anchor="end" fill="#74747d" font-size="12">Personalized Hey Siri (2018) + Voice Trigger System for Siri (2023)</text>
+  </g>
+</svg>
